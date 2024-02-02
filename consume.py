@@ -21,11 +21,12 @@ def on_message(client, userdata, msg): # process incoming mqtt mesages
     print(f"Received '{value}' from '{topic}' topic") # print value and topic to the console
 
     try:
-        connection = mysql.connector.connect(**mysql_config)
+        connection = mysql.connector.connect(**mysql_config) # connects to the database
         cursor = connection.cursor()
 
+        # defines a query to add data into the table
         query = "INSERT INTO Tuyere_Data (pod_id, timestamp, value) VALUES (%s, %s, %s)"
-        data = (topic, str(datetime.now()), value)
+        data = (topic, str(datetime.now()), value) 
         cursor.execute(query, data)
 
         connection.commit()
@@ -36,9 +37,9 @@ def on_message(client, userdata, msg): # process incoming mqtt mesages
     except Exception as e:
         print(f"Error: {e}")
 
-client = mqtt.Client("MQTT_Consumer")
+client = mqtt.Client("MQTT_Consumer") # creates a mqtt client mqtt_consumer
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect(broker_address, port=port)
-client.loop_forever()
+client.connect(broker_address, port=port) 
+client.loop_forever() # starts the mqtt main loop that keeps listening for incoming messages
