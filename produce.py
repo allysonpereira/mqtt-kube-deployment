@@ -5,7 +5,7 @@ import json
 
 broker_address = "localhost"
 port = 1883
-topics = ["pod1", "pod2", "pod3", "pod4"]
+topics = ["pod-1", "pod-2", "pod-3", "pod-4"]
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
