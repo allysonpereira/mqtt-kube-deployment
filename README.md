@@ -15,6 +15,6 @@ from the python collection (deque , queue, and dictionaries).
 - The first step here is to have both consumer and producer scripts working and sendind messages to the database (MySQL Workbench) where each pod is assigned to a unique topic which is already
 implemented at this point.
 - Next, the MQTT scripts would be used to implement data structures to store an amount of data (last 10 or 100 days).
-- The end goal would be to have a daily EOD automated report from a database.
+- The end goal would be to have a daily EOD automated report from a database generating hyteresis based on the set thresholds.
 
 
